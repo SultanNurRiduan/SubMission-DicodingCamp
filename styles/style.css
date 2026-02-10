@@ -727,40 +727,55 @@ button {
 }
 
 .features-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: var(--spacing-md);
-    margin-bottom: var(--spacing-xl);
+    display: flex;
+    flex-direction: column;
+    gap: 60px; /* jarak antar feature */
+    padding: 30px 20px; /* beri ruang kiri-kanan */
+    
 }
 
-.feature-card {
-    background: var(--bg-card);
-    padding: var(--spacing-md);
-    border-radius: 8px;
-    text-align: center;
-    transition: var(--transition);
+.feature-item {
+    display: flex;
+    align-items: center;
+    gap: 40px; /* jarak gambar dan teks */
+    flex-wrap: wrap; /* responsif */
 }
 
-.feature-card:hover {
-    background: var(--bg-hover);
-    transform: translateY(-4px);
+.feature-item.reverse {
+    flex-direction: row-reverse;
 }
 
-.feature-card i {
-    font-size: 2rem;
-    color: var(--accent-primary);
-    margin-bottom: var(--spacing-sm);
+.feature-img {
+    width: 500px;   /* atau ukuran tetap yang kamu mau */
+    height: 500px;  /* sesuaikan dengan rasio gambar */
+    overflow: hidden; /* memotong bagian gambar yang melebihi ukuran container */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
 }
 
-.feature-card h4 {
-    font-size: 1.1rem;
-    margin-bottom: var(--spacing-xs);
-    font-weight: 600;
+.feature-img img {
+    width: 100%;   /* bisa juga height: 100% untuk memaksimalkan tinggi */
+    height: 100%;
+    object-fit: cover; /* menjaga proporsi gambar sambil memenuhi container */
+    display: block; /* hilangkan spasi bawah */
 }
 
-.feature-card p {
-    color: var(--text-secondary);
-    font-size: 0.9rem;
+.feature-text {
+    max-width: 600px;
+}
+
+.feature-text h4 {
+    font-size: 1.5rem; /* lebih menonjol */
+    margin-bottom: 10px;
+    font-weight: 700;
+    color: #fff; /* kontras dengan background gelap */
+}
+
+.feature-text p {
+    font-size: 1rem;
+    color: #ddd;
     line-height: 1.6;
 }
 
@@ -1101,6 +1116,16 @@ button {
         padding: var(--spacing-2xl) 0;
     }
 }
+
+@media (max-width: 768px) {
+    .feature-item,
+    .feature-item.reverse {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+
 
 /* ===== SCROLL ANIMATIONS ===== */
 .content-card,
